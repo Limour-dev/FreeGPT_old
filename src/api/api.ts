@@ -1,6 +1,6 @@
 import { ConfigInterface, MessageInterface } from '@type/chat';
 
-const get1Key = (key) => {
+const get1Key = (key: string) => {
   const arr = key.split("|")
   const randomIndex = Math.floor(Math.random() * arr.length);
   const randomSubstr = arr[randomIndex];
