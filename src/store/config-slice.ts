@@ -5,15 +5,18 @@ export interface ConfigSlice {
   openConfig: boolean;
   theme: Theme;
   autoTitle: boolean;
+  continuousConversation: boolean;
   setOpenConfig: (openConfig: boolean) => void;
   setTheme: (theme: Theme) => void;
   setAutoTitle: (autoTitle: boolean) => void;
+  setContinuousConversation: (continuousConversation: boolean) => void;
 }
 
 export const createConfigSlice: StoreSlice<ConfigSlice> = (set, get) => ({
   openConfig: false,
   theme: 'dark',
   autoTitle: false,
+  continuousConversation: false,
   setOpenConfig: (openConfig: boolean) => {
     set((prev: ConfigSlice) => ({
       ...prev,
@@ -30,6 +33,12 @@ export const createConfigSlice: StoreSlice<ConfigSlice> = (set, get) => ({
     set((prev: ConfigSlice) => ({
       ...prev,
       autoTitle: autoTitle,
+    }));
+  },
+  setContinuousConversation: (continuousConversation: boolean) => {
+    set((prev: ConfigSlice) => ({
+      ...prev,
+      continuousConversation: continuousConversation,
     }));
   },
 });

@@ -1,10 +1,24 @@
 import { ConfigInterface, MessageInterface } from '@type/chat';
+import useStore from '@store/store';
 
 const get1Key = (key: string) => {
   const arr = key.split("|")
   const randomIndex = Math.floor(Math.random() * arr.length);
   const randomSubstr = arr[randomIndex];
   return randomSubstr;
+}
+
+const getLessMessages = (messages: MessageInterface[]) => {
+  if (messages[0].role === 'system') {
+    if(messages.length > 6){
+      return [...messages.slice(0, 3), ...messages.slice(-3)];
+    }
+  }else{
+    if(messages.length > 5){
+      return [...messages.slice(0, 2), ...messages.slice(-3)];
+    }
+  }
+  return messages;
 }
 
 export const getChatCompletion = async (
@@ -17,6 +31,9 @@ export const getChatCompletion = async (
     'Content-Type': 'application/json',
   };
   if (apiKey) headers.Authorization = `Bearer ${get1Key(apiKey)}`;
+  if(useStore.getState().continuousConversation){
+    messages = getLessMessages(messages)
+  };
 
   const response = await fetch(endpoint, {
     method: 'POST',
@@ -43,6 +60,9 @@ export const getChatCompletionStream = async (
     'Content-Type': 'application/json',
   };
   if (apiKey) headers.Authorization = `Bearer ${get1Key(apiKey)}`;
+  if(useStore.getState().continuousConversation){
+    messages = getLessMessages(messages)
+  };
 
   const response = await fetch(endpoint, {
     method: 'POST',

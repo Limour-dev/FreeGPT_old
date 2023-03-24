@@ -63,3 +63,15 @@ export interface LocalStorageInterfaceV3ToV4 {
   autoTitle: boolean;
   prompts: Prompt[];
 }
+export interface LocalStorageInterfaceV4ToV5 {
+  chats: ChatInterface[];
+  currentChatIndex: number;
+  apiKey: string;
+  apiFree: boolean;
+  apiFreeEndpoint: string;
+  apiEndpoint?: string;
+  theme: Theme;
+  autoTitle: boolean;
+  prompts: Prompt[];
+  continuousConversation: boolean;
+}

@@ -7,6 +7,7 @@ import SettingIcon from '@icon/SettingIcon';
 import ThemeSwitcher from '@components/Menu/MenuOptions/ThemeSwitcher';
 import LanguageSelector from '@components/LanguageSelector';
 import AutoTitleToggle from './AutoTitleToggle';
+import ContinuousConversation from './ContinuousConversation';
 import PromptLibraryMenu from '@components/PromptLibraryMenu';
 
 const SettingsMenu = () => {
@@ -38,6 +39,7 @@ const SettingsMenu = () => {
             <LanguageSelector />
             <ThemeSwitcher />
             <AutoTitleToggle />
+            <ContinuousConversation />
             <PromptLibraryMenu />
           </div>
         </PopupModal>
